@@ -26,10 +26,13 @@ public class Clientes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigoCliente;
     
+    @Column(name="nombre")
     private String nombre;
 
+    @Column(name="apellido")
     private String apellido;
 
+    @Column(name="fechaIngreso")
     private Date fechaIngreso;
 
     @ManyToOne()

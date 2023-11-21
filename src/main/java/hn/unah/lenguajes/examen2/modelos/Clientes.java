@@ -2,11 +2,15 @@ package hn.unah.lenguajes.examen2.modelos;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -35,7 +39,9 @@ public class Clientes {
     @Column(name="fechaIngreso")
     private Date fechaIngreso;
 
-    @ManyToOne()
+    @JsonIgnore
+    @JoinColumn(name="idTipoCliente", referencedColumnName = "idTipoCliente")
+    @ManyToOne(cascade= CascadeType.ALL)
     private TipoCliente tipoCliente;
     
 }
